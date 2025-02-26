@@ -1,36 +1,46 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import numpy as np
+import pandas as pd
 
+# Load the trained model
+model = joblib.load("lifestyle_model.pkl")
+
+# Initialize FastAPI app
 app = FastAPI()
 
-# Load trained model
-model = joblib.load("price_model.pkl")
+# Enable CORS (for frontend integration)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# Define Request Model
-class PredictionRequest(BaseModel):
-    state: str
-    crop: str
-    month: int
-    year: int
+# Define input request format
+class PredictRequest(BaseModel):
+    highBP: int
+    highChol: int
+    bmi: float
+    stroke: int
+    heartDisease: int
+    physActivity: int
+    genHlth: int
+    physHlth: int
+    diffWalk: int
+    age: int
 
-# Encode categorical values
-state_mapping = {"Maharashtra": 0, "Uttar Pradesh": 1}
-crop_mapping = {"potato": 0, "onion": 1, "rice": 2, "wheat": 3, "pulses": 4}
 
+# Prediction endpoint
 @app.post("/predict")
-def predict_price(request: PredictionRequest):
-    try:
-        state_code = state_mapping.get(request.state, -1)
-        crop_code = crop_mapping.get(request.crop, -1)
-
-        if state_code == -1 or crop_code == -1:
-            return {"error": "Invalid input"}
-
-        input_data = np.array([[state_code, crop_code, request.month, request.year]])
-        predicted_price = model.predict(input_data)[0]
-
-        return {"predicted_price": round(predicted_price, 2)}
-    except Exception as e:
-        return {"error": str(e)}
+async def predict(data: PredictRequest):
+    features = np.array([[data.highBP, data.highChol, data.bmi, data.stroke, 
+                          data.heartDisease, data.physActivity, data.genHlth, 
+                          data.physHlth, data.diffWalk, data.age]])
+    
+    prediction = model.predict(features)
+    
+    return {"prediction": "Disease" if prediction[0] == 1 else "No Disease"}
