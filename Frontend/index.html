@@ -4,101 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agri Price Predictor</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 20px;
-        }
-        nav ul {
-            list-style: none;
-            background: #4CAF50;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-
-
-        .container {
-            background: white;
-            padding: 20px;
-            width: 50%;
-            margin: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-    </style>
+    <title>Health Prediction</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="predict.html">Predict</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
     <div class="container">
-        <h1>Agri-Commodity Price Prediction</h1>
-        <form id="predictionForm">
-            <label for="state">Select State:</label>
-            <select id="state">
-                <option value="Maharashtra">Maharashtra</option>
-                <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <h2>Health Data Form</h2>
+        <form id="predictForm">
+            <label for="highBP">High Blood Pressure</label>
+            <select id="highBP">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
             </select>
 
-            <label for="crop">Select Crop:</label>
-            <select id="crop">
-                <option value="potato">Potato</option>
-                <option value="onion">Onion</option>
-                <option value="rice">Rice</option>
-                <option value="wheat">Wheat</option>
-                <option value="pulses">Pulses</option>
+            <label for="highChol">High Cholesterol</label>
+            <select id="highChol">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
             </select>
 
-            <label for="month">Month:</label>
-            <input type="number" id="month" min="1" max="12" required>
+            <label for="bmi">BMI</label>
+            <input type="number" id="bmi" name="bmi">
 
-            <label for="year">Year:</label>
-            <input type="number" id="year" min="2024" required>
+            <label for="stroke">Stroke</label>
+            <select id="stroke">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
 
-            <button type="submit">Predict Price</button>
+            <label for="heartDisease">Heart Disease or Attack</label>
+            <select id="heartDisease">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="physActivity">Physical Activity</label>
+            <select id="physActivity">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="genHlth">General Health</label>
+            <select id="genHlth">
+                <option value="1">Excellent</option>
+                <option value="2">Very Good</option>
+                <option value="3">Good</option>
+                <option value="4">Fair</option>
+                <option value="5">Poor</option>
+            </select>
+
+            <label for="physHlth">PIllness or Injury from last 30 days</label>
+            <select id="physHlth">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="diffWalk">Difficulty Walking</label>
+            <select id="diffWalk">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label for="age">Age Group</label>
+            <select id="age">
+                <option value="1">18-24</option>
+                <option value="9">60-64</option>
+                <option value="13">80 or older</option>
+            </select>
+
+            <button type="submit">Submit</button>
         </form>
-
-        <h2 id="result">Predicted Price: --</h2>
     </div>
+    <h3 id="result"></h3>
 
     <script src="script.js"></script>
 </body>
