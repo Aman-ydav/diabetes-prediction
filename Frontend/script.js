@@ -20,7 +20,7 @@ document
       diffWalk: parseInt(document.getElementById("diffWalk").value),
       age: parseInt(document.getElementById("age").value),
     };
-
+    console.log(requestData);
     try {
       const response = await fetch("http://127.0.0.1:8000/predict", {
         method: "POST",
@@ -33,7 +33,7 @@ document
         "result"
       ).innerText = `Prediction: ${result.prediction}`;
 
-      document.getElementById("predictForm").reset();
+      // document.getElementById("predictForm").reset();
     } catch (error) {
       console.error("Error:", error);
       document.getElementById("result").innerText = "Error fetching prediction";

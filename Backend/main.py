@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import numpy as np
-import pandas as pd
+from model_functions import model_predict
 
 # Load the trained model
 model = joblib.load("lifestyle_model.pkl")
@@ -41,6 +41,6 @@ async def predict(data: PredictRequest):
                           data.heartDisease, data.physActivity, data.genHlth, 
                           data.physHlth, data.diffWalk, data.age]])
     
-    prediction = model.predict(features)
-    
+    prediction = model_predict(features)
+    print(prediction)
     return {"prediction": "Disease" if prediction[0] == 1 else "No Disease"}
