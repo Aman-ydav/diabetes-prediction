@@ -85,3 +85,10 @@ button:hover {
     background-color: #f8d7da;
     color: #721c24;
 }
+
+img {
+    display: block;
+    margin: 20px auto;  /* Auto margin centers the image */
+    width: 70%;  /* Image takes 50% of container width */
+    height: auto;  /* Prevents the image from getting too large */
+}
