@@ -5,13 +5,12 @@ import joblib
 import numpy as np
 from model_functions import model_predict
 
-# Load the trained model
-model = joblib.load("lifestyle_model.pkl")
 
-# Initialize FastAPI app
+
+
 app = FastAPI()
 
-# Enable CORS (for frontend integration)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -20,7 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Define input request format
+
 class PredictRequest(BaseModel):
     highBP: int
     highChol: int
@@ -34,7 +33,6 @@ class PredictRequest(BaseModel):
     age: int
 
 
-# Prediction endpoint
 @app.post("/predict")
 async def predict(data: PredictRequest):
     features = np.array([[data.highBP, data.highChol, data.bmi, data.stroke, 

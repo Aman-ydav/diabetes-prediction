@@ -1,7 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector(".container").style.opacity = "1";
-});
-
 document.getElementById("predictForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -41,8 +37,7 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
             result.textContent = `Prediction: Low Risk`;
         }
         document.getElementById("predictForm").reset();
-        // result.textContent = `Prediction: ${resultData.prediction}`;
-        
+
     } catch (error) {
         console.error("Error:", error);
         result.className = 'error';
