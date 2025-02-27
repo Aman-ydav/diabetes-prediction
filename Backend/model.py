@@ -4,7 +4,6 @@ from imblearn.over_sampling import SMOTE
 import joblib
 from xgboost import XGBClassifier
 
-
 df = pd.read_csv('datasets/diabetes.csv')
 df = df.drop(columns=['AnyHealthcare', 'NoDocbcCost', 'CholCheck', 'Sex', 'MentHlth', 'Smoker', 'HvyAlcoholConsump', 'Veggies', 'Fruits', 'Education', 'Income'])
 X = df.drop('Diabetes_binary', axis=1)
@@ -15,7 +14,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 smote = SMOTE(random_state=42, sampling_strategy=0.7)
 X_train, y_train = smote.fit_resample(X_train, y_train)
 
-model: XGBClassifier = XGBClassifier(
+model = XGBClassifier(
     scale_pos_weight=2.8,
     n_estimators=200,
     learning_rate=0.05,
