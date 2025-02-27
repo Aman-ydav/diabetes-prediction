@@ -1,10 +1,9 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.encoders import jsonable_encoder
+from fastapi.responses import FileResponse
+from pydantic import BaseModel
 import numpy as np
 from model_functions import model_predict
-
 
 app = FastAPI()
 
@@ -36,7 +35,25 @@ async def predict(data: PredictRequest):
                           data.physHlth, data.diffWalk, data.age]])
     
     prediction = model_predict(features)
-    # print(prediction)
-    print(type(prediction[1][0].tolist()))
     return {"prediction": 1 if prediction[0] == 1 else 0, "probability": prediction[1][0].tolist()}
-    # return jsonable_encoder({"prediction": prediction})
+
+
+# @app.get("/feature")
+# def get_feature_importance():
+#     # Extract feature importance
+#     model = get_model()
+#     booster = model.get_booster()
+#     importance = booster.get_score(importance_type="weight")
+    
+#     # Convert to sorted list
+#     sorted_importance = sorted(importance.items(), key=lambda x: x[1], reverse=True)
+
+#     # Convert to JSON-friendly format
+#     feature_data = [{"feature": feature, "importance": score} for feature, score in sorted_importance]
+    
+#     return {"feature": feature_data}
+
+@app.get("/image")
+async def get_image():
+    image_path = "preprocessing/importance.png"  # Replace with the actual image path
+    return FileResponse(image_path, media_type="image/jpeg")

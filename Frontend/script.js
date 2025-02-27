@@ -27,12 +27,27 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
             body: JSON.stringify(requestData),
         });
 
+        // const featuresResponse = await fetch("http://127.0.0.1:8000/image", {
+        //     method: "GET",
+        //     headers: { "Content-Type": "application/json" },
+        // });
+        // const featuresData = await featuresResponse.json();
+        // console.log(featuresData);
+
+        fetch("http://127.0.0.1:8000/image")
+            .then(response => response.blob())  // Convert response to Blob
+            .then(blob => {
+                const url = URL.createObjectURL(blob); // Create object URL
+                document.getElementById("image").src = url; // Set as image src
+            })
+            .catch(error => console.error("Error loading image:", error));
         const resultData = await response.json();
 
         result.className = 'success';
         console.log(resultData);
         console.log(resultData.probability[1])
-        var risk = ""
+        var risk = "";
+
         if (resultData.probability[1] > 0.8) risk="Very High";
         else if (resultData.probability[1] > 0.6) risk="High";
         else if (resultData.probability[1] > 0.4) risk="Moderate";
