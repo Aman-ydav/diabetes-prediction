@@ -43,4 +43,4 @@ async def predict(data: PredictRequest):
     
     prediction = model_predict(features)
     print(prediction)
-    return {"prediction": "Disease" if prediction[0] == 1 else "No Disease"}
+    return {"prediction": 1 if prediction[0] == 1 else 0}

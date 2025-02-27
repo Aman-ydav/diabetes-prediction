@@ -1,47 +1,87 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
-  display: flex;
-  background: linear-gradient(to right, #054519, #d5e8e9);
-  justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    background: linear-gradient(to right, #025b1e, #daffaf);
+    justify-content: center;
 }
 
 .container {
-  width: 600px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+form {
+    display: grid;
+    gap: 20px;
 }
 
 label {
-  font-weight: bold;
-  margin-top: 10px;
-  display: block;
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 5px;
+    display: block;
 }
 
-select,
-input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border-color: #3498db;
 }
 
 button {
-  margin-top: 15px;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  background: #03530e;
-  color: white;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
+    background-color: #025b1e;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
 button:hover {
-  background: #0b6013;
+    background-color: #2980b9;
+}
+
+#result {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
 }

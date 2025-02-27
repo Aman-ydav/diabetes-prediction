@@ -4,89 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Prediction</title>
+    <title>Diabetes Risk Assessment</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="container">
-        <h2>Health Data Form</h2>
+        <h2><i class="fas fa-heartbeat"></i> Diabetes Risk Assessment</h2>
         <form id="predictForm">
-            <label for="highBP">High Blood Pressure</label>
-            <select id="highBP">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+            <div class="form-group">
+                <label for="highBP"><i class="fas fa-chart-line"></i> High Blood Pressure</label>
+                <select id="highBP" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
 
-            <label for="highChol">High Cholesterol</label>
-            <select id="highChol">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+            <div class="form-group">
+                <label for="highChol"><i class="fas fa-chart-line"></i> High Cholesterol</label>
+                <select id="highChol">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
 
-            <label for="bmi">BMI</label>
-            <input type="number" id="bmi" name="bmi">
+            <div class="form-group">
+                <label for="bmi"><i class="fas fa-weight"></i> BMI</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" min="10" max="50" required>
+            </div>
 
-            <label for="stroke">Have you ever experienced a Stroke</label>
-            <select id="stroke">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+            <div class="form-group">
+                <label for="stroke"><i class="fa-regular fa-hospital"></i> Have you ever experienced a Stroke</label>
+                <select id="stroke">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
 
-            <label for="heartDisease">Coronary Heart Disease (CHD) or Myocardial Infarction (MI)?</label>
-            <select id="heartDisease">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+            <div class="form-group">
+                <label for="heartDisease"><i class="fa-solid fa-disease"></i> Coronary Heart Disease (CHD) or Myocardial Infarction (MI)?</label>
+                <select id="heartDisease">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
 
-            <label for="physActivity">Exercise?</label>
-            <select id="physActivity">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+            <div class="form-group">
+                <label for="physActivity"><i class="fa-solid fa-dumbbell"></i> Exercise?</label>
+                <select id="physActivity">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
 
-            <label for="genHlth">Current Health</label>
-            <select id="genHlth">
-                <option value="1">Excellent</option>
-                <option value="2">Very Good</option>
-                <option value="3">Good</option>
-                <option value="4">Fair</option>
-                <option value="5">Poor</option>
-            </select>
+            <div class="form-group">
+                <label for="genHlth"><i class="fa-solid fa-user-doctor"></i> Current Health</label>
+                <select id="genHlth">
+                    <option value="1">Excellent</option>
+                    <option value="2">Very Good</option>
+                    <option value="3">Good</option>
+                    <option value="4">Fair</option>
+                    <option value="5">Poor</option>
+                </select>
+            </div>
 
-            <label for="physHlth">Any Illness or Injury in last 30 days</label>
-            <select id="physHlth">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+            <div class="form-group">
+                <label for="physHlth"><i class="fa-solid fa-viruses"></i> Any Illness or Injury in last 30 days</label>
+                <select id="physHlth">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
 
-            <label for="diffWalk">Difficulty in Walking</label>
-            <select id="diffWalk">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-            </select>
+            <div class="form-group">
+                <label for="diffWalk"><i class="fa-solid fa-person-walking"></i> Difficulty in Walking</label>
+                <select id="diffWalk">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
 
-            <label for="age">Age Group</label>
-            <select id="age">
-                <option value="1">18-24</option>
-                <option value="2">25-29</option>
-                <option value="3">30-34</option>
-                <option value="4">35-39</option>
-                <option value="5">40-44</option>
-                <option value="6">45-49</option>
-                <option value="7">50-54</option>
-                <option value="8">55-59</option>
-                <option value="9">60-64</option>
-                <option value="10">65-69</option>
-                <option value="11">70-74</option>
-                <option value="12">75-79</option>
-                <option value="13">80 or older</option>
-            </select>
+            <div class="form-group">
+                <label for="age"><i class="fa-solid fa-user"></i> Age Group</label>
+                <select id="age">
+                    <option value="1">18-24</option>
+                    <option value="2">25-29</option>
+                    <option value="3">30-34</option>
+                    <option value="4">35-39</option>
+                    <option value="5">40-44</option>
+                    <option value="6">45-49</option>
+                    <option value="7">50-54</option>
+                    <option value="8">55-59</option>
+                    <option value="9">60-64</option>
+                    <option value="10">65-69</option>
+                    <option value="11">70-74</option>
+                    <option value="12">75-79</option>
+                    <option value="13">80 or older</option>
+                </select>
+            </div>
 
-            <button type="submit">Submit</button>
+            <button type="submit"><i class="fas fa-calculator"></i> Calculate Risk</button>
         </form>
     </div>
-    <h3 id="result"></h3>
+    <div id="result" class="hidden"></div>
 
     <script src="script.js"></script>
 </body>
