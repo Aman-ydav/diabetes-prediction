@@ -8,7 +8,6 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
     const button = e.target.querySelector('button');
     const result = document.getElementById('result');
 
-    // Show loading state
     button.disabled = true;
     button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
@@ -34,7 +33,6 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
 
         const resultData = await response.json();
 
-        // Show success message
         result.className = 'success';
         console.log(resultData);
         if (resultData.prediction == 1) {
@@ -44,9 +42,9 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
         }
         document.getElementById("predictForm").reset();
         // result.textContent = `Prediction: ${resultData.prediction}`;
+        
     } catch (error) {
         console.error("Error:", error);
-        // Show error message
         result.className = 'error';
         result.textContent = 'An error occurred. Please try again.';
     } finally {
@@ -56,7 +54,7 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
     }
 });
 
-// Add input validation
+
 document.getElementById('bmi').addEventListener('input', (e) => {
     const value = parseFloat(e.target.value);
     if (value < 10 || value > 50) {
