@@ -1,15 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-import joblib
 import numpy as np
 from model_functions import model_predict
 
 
-
-
 app = FastAPI()
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,7 +14,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 class PredictRequest(BaseModel):
     highBP: int
