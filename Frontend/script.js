@@ -46,7 +46,8 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
         result.className = 'success';
         console.log(resultData);
         console.log(resultData.probability[1])
-        var risk = ""
+        var risk = "";
+
         if (resultData.probability[1] > 0.8) risk="Very High";
         else if (resultData.probability[1] > 0.6) risk="High";
         else if (resultData.probability[1] > 0.4) risk="Moderate";
