@@ -19,7 +19,7 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
         diffWalk: parseInt(document.getElementById("diffWalk").value),
         age: parseInt(document.getElementById("age").value),
     };
-    console.log(requestData);
+    // console.log(requestData);
     try {
         const response = await fetch("http://127.0.0.1:8000/predict", {
             method: "POST",
@@ -31,10 +31,11 @@ document.getElementById("predictForm").addEventListener("submit", async (e) => {
 
         result.className = 'success';
         console.log(resultData);
-        if (resultData.prediction == 1) {
-            result.textContent = `Prediction: High Risk\nPlease consult a doctor.`;
+        console.log(resultData.probability[0]);
+        if (resultData.prediction[0] == 1) {
+            result.textContent = `Prediction: High Risk! Please consult a doctor.`;
         } else {
-            result.textContent = `Prediction: Low Risk`;
+            result.textContent = `Prediction: Low Risk! `;
         }
         document.getElementById("predictForm").reset();
 

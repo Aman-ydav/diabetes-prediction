@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.encoders import jsonable_encoder
 import numpy as np
 from model_functions import model_predict
 
@@ -35,5 +36,7 @@ async def predict(data: PredictRequest):
                           data.physHlth, data.diffWalk, data.age]])
     
     prediction = model_predict(features)
-    print(prediction)
-    return {"prediction": 1 if prediction[0] == 1 else 0}
+    # print(prediction)
+    print(type(prediction[1][0].tolist()))
+    return {"prediction": 1 if prediction[0] == 1 else 0, "probability": prediction[1][0].tolist()}
+    # return jsonable_encoder({"prediction": prediction})
